@@ -1,33 +1,67 @@
-# weather-app
+# 🌦️ Net Weather
 
-This template should help get you started developing with Vue 3 in Vite.
+**Net Weather** is a responsive and modern weather application built with Vue 3, Pinia for state management, and TypeScript. It fetches real-time weather data from the OpenWeatherMap API, allowing users to search for any city and view current conditions along with a 7-day forecast.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🚀 Features
 
-## Type Support for `.vue` Imports in TS
+- 🔍 **City Search**: Search for weather information by entering a city name.
+- 📍 **Geolocation Support**: Automatically fetch and display weather data for the user's current location using the Geolocation API.
+- 🌡️ **Current Weather Display**: View current temperature, humidity, wind speed, and weather conditions.
+- 📅 **7-Day Forecast**: Access a 7-day weather forecast with detailed information.
+- 🌐 **Unit Conversion**: Toggle between Celsius (°C) and Fahrenheit (°F) temperature units.
+- 🎨 **Responsive Design**: Optimized for both desktop and mobile browsers.
+- ⚙️ **TypeScript Integration**: Ensures type safety and better code maintainability.
+- 🗂️ **State Management with Pinia**: Efficient and scalable state management.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+---
 
-## Customize configuration
+## 🛠️ Tech Stack
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- [Vue 3](https://vuejs.org/)
+- [Pinia](https://pinia.vuejs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [OpenWeatherMap API](https://openweathermap.org/api)
+- [Axios](https://axios-http.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-## Project Setup
+---
 
-```sh
-npm install
-```
+## 📦 Installation
 
-### Compile and Hot-Reload for Development
+1. **Clone the Repository**
 
-```sh
-npm run dev
-```
+   ```bash
+   git clone https://github.com/Magdi-khaled/Weather-App.git
+   cd Weather-App
+   ```
 
-### Type-Check, Compile and Minify for Production
+2. **Install Dependencies**
 
-```sh
-npm run build
-```
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Configure Environment Variables**
+
+   Create a **.env** file in the root directory:
+
+   ```bash
+
+   VITE_OPENWEATHER_API_KEY=your_api_key_here
+
+   ```
+
+4. **Run the Development Server**
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+Open **http://localhost:5173** to view it in the browser.
