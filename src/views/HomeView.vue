@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <main>
-    Hello from Net Weather App
+  <main class="container-w">
+
   </main>
 </template>

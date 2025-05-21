@@ -10,8 +10,11 @@
 }
 
 @layer base {
+  .container-w {
+    @apply px-[1rem] md:px-[10rem] lg:px-[20rem] w-full;
+  }
   body {
-    @apply h-[100dvh] text-neutral-100 font-merriweather m-auto;
+    @apply h-[100dvh] text-white font-merriweather m-auto text-center;
     background: linear-gradient(
       to bottom,
       var(--color-background),

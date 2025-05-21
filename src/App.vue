@@ -1,3 +1,10 @@
+<script setup>
+import SiteNavigation from '@/components/SiteNavigation.vue';
+</script>
+
 <template>
-  <RouterView />
+  <div class="flex flex-col min-h-[100dvh]">
+    <SiteNavigation />
+    <RouterView />
+  </div>
 </template>
