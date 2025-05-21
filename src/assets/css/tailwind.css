@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #596da4;
+  --color-primary: #e3e8e4;
+  --color-secondary: #c6a2a6;
+  --color-hover: #9faac3;
+  --color-highlight: #bcd3d4;
+  --font-merriweather: "Merriweather", serif;
+}
+
+@layer base {
+  body {
+    @apply h-[100dvh] text-neutral-100 font-merriweather m-auto;
+    background: linear-gradient(
+      to bottom,
+      var(--color-background),
+      var(--color-secondary)
+    );
+  }
+}
