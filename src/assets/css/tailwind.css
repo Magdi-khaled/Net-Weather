@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #596da4;
+  --color-background: #001E33;
   --color-primary: #e3e8e4;
-  --color-secondary: #c6a2a6;
+  --color-secondary: #015746;
   --color-hover: #9faac3;
   --color-highlight: #bcd3d4;
-  --font-merriweather: "Merriweather", serif;
+  --font-Roboto: "Roboto", serif;
 }
 
 @layer base {
@@ -14,7 +14,7 @@
     @apply px-[1rem] md:px-[10rem] lg:px-[20rem] w-full;
   }
   body {
-    @apply h-[100dvh] text-white font-merriweather m-auto text-center;
+    @apply h-[100dvh] text-white font-Roboto m-auto text-center;
     background: linear-gradient(
       to bottom,
       var(--color-background),

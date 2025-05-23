@@ -12,13 +12,13 @@ const modalActive = ref<boolean>(false);
             <RouterLink :to="{ name: 'home' }">
                 <div class="flex items-center gap-4 text-center flex-1">
                     <icon icon="mdi:weather-lightning-rainy" width="35" height="35" />
-                    <p class="capitalize">the local weather</p>
+                    <p class="capitalize">net weather</p>
                 </div>
             </RouterLink>
             <div class="flex gap-3 flex-1 justify-end items-center">
                 <icon icon="tabler:info-circle-filled" width="28" height="28"
                     class="hover:text-hover duration-150 cursor-pointer" @click="modalActive = true" />
-                <icon icon="pixel:plus-solid" width="20" height="20"
+                <icon icon="pixel:plus-solid" width="17" height="17"
                     class="hover:text-hover duration-150 cursor-pointer" />
             </div>
         </nav>
