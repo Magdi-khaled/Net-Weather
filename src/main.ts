@@ -1,5 +1,8 @@
 import "./assets/css/tailwind.css";
-
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 

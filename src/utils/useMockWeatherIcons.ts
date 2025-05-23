@@ -1,6 +1,6 @@
 export const weatherIconMap: Record<string, string> = {
   Sunny: "line-md:moon-filled-to-sunny-filled-transition",
-  Clear: "ri:moon-clear-fill",
+  Clear: "material-symbols:clear-night",
   "Partly cloudy": "meteocons:partly-cloudy-day-fill",
   Cloudy: "mingcute:sun-cloudy-fill",
   Overcast: "ion:cloudy-night-sharp",

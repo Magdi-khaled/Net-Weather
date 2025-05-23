@@ -1,13 +1,47 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import { uid } from 'uid';
 import BaseModal from '@/components/BaseModal.vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import type ICity from '@/types/useSavedQuery';
+import { useHelper } from '@/utils/usehelper';
 
+const route = useRoute();
+const router = useRouter();
+const { isCityExist } = useHelper();
 const modalActive = ref<boolean>(false);
+const savedCities = ref<ICity[]>([]);
+const cityNotExist = computed(() => isCityExist(savedCities.value))
+
+const addCity = () => {
+    try {
+        if (localStorage.getItem('savedCities')) {
+            savedCities.value = JSON.parse<[]>(localStorage.getItem('savedCities'));
+        }
+        const locationObj = {
+            id: uid(),
+            state: route.params.state,
+            city: route.params.city,
+            coords: {
+                lng: route.query.lng,
+                lat: route.query.lat,
+            }
+        }
+        savedCities.value.push(locationObj);
+        localStorage.setItem('savedCities', JSON.stringify(savedCities.value));
+
+        let query = Object.assign({}, route.query);
+        delete query.preview;
+        router.replace({ query })
+    } catch (e) {
+        console.error(e);
+    }
+};
 </script>
 
 <template>
-    <header class="sticky top-0 shadow-lg container-w">
+    <header class="sticky top-0 z-90 shadow-lg container-w head-bg">
         <nav class="flex flex-row justify-center items-center gap-4 py-6">
             <RouterLink :to="{ name: 'home' }">
                 <div class="flex items-center gap-4 text-center flex-1">
@@ -18,8 +52,8 @@ const modalActive = ref<boolean>(false);
             <div class="flex gap-3 flex-1 justify-end items-center">
                 <icon icon="tabler:info-circle-filled" width="28" height="28"
                     class="hover:text-hover duration-150 cursor-pointer" @click="modalActive = true" />
-                <icon icon="pixel:plus-solid" width="17" height="17"
-                    class="hover:text-hover duration-150 cursor-pointer" />
+                <icon v-if="route.query.preview && !cityNotExist" icon="pixel:plus-solid" width="17" height="17"
+                    class="hover:text-hover duration-150 cursor-pointer" @click="addCity" />
             </div>
         </nav>
         <BaseModal v-model:modal-active="modalActive">

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #001E33;
+  --color-background: #001e33;
   --color-primary: #e3e8e4;
   --color-secondary: #015746;
   --color-hover: #9faac3;
@@ -15,10 +15,19 @@
   }
   body {
     @apply h-[100dvh] text-white font-Roboto m-auto text-center;
+  }
+  body,
+  .head-bg {
     background: linear-gradient(
-      to bottom,
-      var(--color-background),
-      var(--color-secondary)
-    );
+        to bottom,
+        var(--color-background),
+        var(--color-secondary)
+      )
+      no-repeat fixed;
+  }
+  .scroll-x-custom {
+    overflow-x: scroll;
+    scrollbar-color: var(--color-background) var(--color-secondary);
+    scrollbar-width: thin;
   }
 }

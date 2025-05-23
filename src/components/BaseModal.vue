@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import BaseButton from '@/components/BaseButton.vue';
+import { watch } from 'vue';
+
 const modalActive = defineModel<Boolean>('modalActive');
+watch(modalActive, (newVal) => {
+    newVal ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
+});
 </script>
 
 <template>
     <Teleport to="body">
         <Transition name="modal-outer">
-            <div v-show="modalActive"
-                class="absolute w-full bg-[#00000096] h-screen top-0 left-0 flex justify-center px-3 sm:px-8">
+            <div v-if="modalActive"
+                class="fixed z-99 w-full bg-[#00000096] h-screen top-0 left-0 flex justify-center px-3 sm:px-8">
                 <Transition name="modal-inner">
                     <div v-if="modalActive" class="p-4 bg-highlight rounded-md border-[2px] border-secondary self-center max-w-screen-md
                         text-start text-sm sm:text-md">
