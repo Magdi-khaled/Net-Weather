@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import AsyncForecast from '@/components/AsyncForecast.vue';
 import axios from 'axios';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { Icon } from '@iconify/vue';
 import { useHelper } from '@/utils/usehelper';
-import { computed } from 'vue';
 
 const route = useRoute();
+const { isCityExist } = useHelper();
 const weatherData = ref<any>(null);
-const cityNotExist = computed(() => useHelper().isCityExist(JSON.parse(localStorage.getItem('savedCities'))))
+const cityNotExist = computed(() => isCityExist());
 const getWeatherData = async () => {
     try {
         const response = await axios.get<{ current: {}, forecast: {}, location: {} }>('https://api.weatherapi.com/v1/forecast.json', {
@@ -22,7 +22,7 @@ const getWeatherData = async () => {
             }
         });
         weatherData.value = response.data;
-        console.log(weatherData.value);
+        // console.log(weatherData.value);
     } catch (err) {
         console.error('Failed to fetch weather data:', err);
     }
@@ -34,7 +34,7 @@ onMounted(() => getWeatherData());
 <template>
     <div>
         <div v-if="weatherData" class="flex flex-col flex-1 items-center">
-            <div v-if="route.query.preview && !cityNotExist" class="py-[12px] bg-background w-full text-center shadow">
+            <div v-if="route.query.preview && cityNotExist" class="py-[12px] bg-background w-full text-center shadow">
                 <p class="text-sm sm:text-[16px] px-2">
                     You are currently previewing this city, click the "+"
                     icon to start tracking this city.</p>

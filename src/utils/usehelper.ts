@@ -3,13 +3,14 @@ import { useRoute } from "vue-router";
 
 export const useHelper = () => {
   const route = useRoute();
-  const isCityExist = (savedCities: ICity[]) => {
-    if (localStorage.getItem("savedCities")) {
-      savedCities = JSON.parse(localStorage.getItem("savedCities")) as ICity[];
-    }
-    return savedCities.find((item) => item?.state === route.params.state);
+
+  const isCityExist = () => {
+    const saved = localStorage.getItem("savedCities");
+    const savedCities: ICity[] = saved ? JSON.parse(saved) : [];
+    return savedCities.findIndex(
+      (item) => item?.state === (route.params.state as string)
+    );
   };
-  return {
-    isCityExist,
-  };
+
+  return { isCityExist };
 };

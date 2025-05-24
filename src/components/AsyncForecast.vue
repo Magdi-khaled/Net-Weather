@@ -64,6 +64,7 @@ const onSwiper = (swiper: any) => {
             <p class="capitalize">
                 {{ props.weatherData.current.condition.text }}
             </p>
+
             <Icon
                 :icon="weatherIconMap[props.weatherData.current.condition.text?.trim()] || 'meteocons:partly-cloudy-day-fill'"
                 class="sm:text-7xl text-6xl my-4" />
@@ -98,8 +99,8 @@ const onSwiper = (swiper: any) => {
                                 <p class="text-sm whitespace-nowrap">
                                     {{ hourWeather(hour)[1] + ' ' + hourWeather(hour)[2] }}
                                 </p>
-                                <Icon
-                                    :icon="weatherIconMap[hour.condition.text?.trim()] || 'meteocons:partly-cloudy-day-fill'"
+                                <!-- {{ hour.condition.text?.replaceAll(" ", "") }} -->
+                                <Icon :icon="weatherIconMap[hour.condition.text] || 'meteocons:partly-cloudy-day-fill'"
                                     class="sm:text-5xl text-3xl" />
                                 <p class="mb-4">{{ hour.temp_c }}&deg;</p>
                             </div>

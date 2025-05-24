@@ -7,22 +7,22 @@ import { useRoute, useRouter } from 'vue-router';
 import type ICity from '@/types/useSavedQuery';
 import { useHelper } from '@/utils/usehelper';
 
+const { isCityExist } = useHelper();
 const route = useRoute();
 const router = useRouter();
-const { isCityExist } = useHelper();
 const modalActive = ref<boolean>(false);
 const savedCities = ref<ICity[]>([]);
-const cityNotExist = computed(() => isCityExist(savedCities.value))
+const cityNotExist = computed(() => isCityExist());
 
 const addCity = () => {
     try {
         if (localStorage.getItem('savedCities')) {
-            savedCities.value = JSON.parse<[]>(localStorage.getItem('savedCities'));
+            savedCities.value = JSON.parse(localStorage.getItem('savedCities') || '[]');
         }
-        const locationObj = {
+        const locationObj: ICity = {
             id: uid(),
-            state: route.params.state,
-            city: route.params.city,
+            state: route.params?.state as string,
+            city: route.params?.city as string,
             coords: {
                 lng: route.query.lng,
                 lat: route.query.lat,
@@ -52,7 +52,7 @@ const addCity = () => {
             <div class="flex gap-3 flex-1 justify-end items-center">
                 <icon icon="tabler:info-circle-filled" width="28" height="28"
                     class="hover:text-hover duration-150 cursor-pointer" @click="modalActive = true" />
-                <icon v-if="route.query.preview && !cityNotExist" icon="pixel:plus-solid" width="17" height="17"
+                <icon v-if="route.query.preview && cityNotExist" icon="pixel:plus-solid" width="17" height="17"
                     class="hover:text-hover duration-150 cursor-pointer" @click="addCity" />
             </div>
         </nav>
