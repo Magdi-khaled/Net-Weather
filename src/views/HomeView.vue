@@ -2,8 +2,10 @@
 import { ref } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import CityList from "@/components/CityList.vue";
 import type API_MAP_RES from '@/types/useAPI_MAP_RES';
 import { Icon } from '@iconify/vue';
+import type ICity from "@/types/useSavedQuery";
 
 const router = useRouter();
 const previewCity = (searchResult: { place_name: any, geometry: any }) => {
@@ -22,6 +24,7 @@ const previewCity = (searchResult: { place_name: any, geometry: any }) => {
 const mapboxAPIKey = import.meta.env.VITE_MAPBOX_API_KEY;
 const loading = ref<boolean>(false);
 const searchQuery = ref<string>("");
+const savedCites = ref<ICity[]>([]);
 const queryTimeout = ref();
 const mapboxSearchResults = ref<API_MAP_RES[]>();
 const searchError = ref<boolean>(false);
@@ -68,6 +71,9 @@ const getSearchResults = () => {
           </li>
         </template>
       </ul>
+    </div>
+    <div class="flex flex-col gap-4">
+      <CityList v-if="savedCites" />
     </div>
   </main>
 </template>

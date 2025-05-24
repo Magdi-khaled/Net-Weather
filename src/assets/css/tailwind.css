@@ -11,7 +11,7 @@
 
 @layer base {
   .container-w {
-    @apply px-[1rem] md:px-[10rem] lg:px-[20rem] w-full;
+    @apply px-[1rem] md:px-[5rem] lg:px-[15rem] w-full;
   }
   body {
     @apply h-[100dvh] text-white font-Roboto m-auto text-center;
@@ -24,10 +24,5 @@
         var(--color-secondary)
       )
       no-repeat fixed;
-  }
-  .scroll-x-custom {
-    overflow-x: scroll;
-    scrollbar-color: var(--color-background) var(--color-secondary);
-    scrollbar-width: thin;
   }
 }

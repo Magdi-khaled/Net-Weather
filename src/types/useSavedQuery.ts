@@ -3,7 +3,7 @@ export default interface ICity {
   city: string;
   state: string;
   coords: {
-    lat: any;
-    lng: any;
+    lat: string;
+    lng: string;
   };
 }
